@@ -1,0 +1,32 @@
+[project]
+name = "cineville-csv-processor"
+version = "0.1.0"
+description = "CSV processor for member visits with validation, grouping, and reporting."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.17",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.0.300"
+]
+
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = ["output", "logs", ".venv"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"

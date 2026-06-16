@@ -1,0 +1,17 @@
+__pycache__/
+.python-version
+.venv/
+venv/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+.pytest_cache/
+.coverage
+.htmlcov
+dist/
+build/
+output/*.csv
+logs/*.log
+.DS_Store
+.env

@@ -1,0 +1,6 @@
+pytest>=9.0.3
+ruff>=0.15.17
+
+[dev]
+pytest>=8.0
+ruff>=0.0.300
