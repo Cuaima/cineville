@@ -1,4 +1,9 @@
-"""Main entry point for the CSV processing pipeline."""
+"""Main entry point for the CSV processing pipeline.
+
+AI usage: Claude (Anthropic) was used as a sounding board for architecture
+decisions and code review. GitHub Copilot generated the initial project
+scaffold. All code was written, understood, and is explainable by the author.
+"""
 
 from __future__ import annotations
 
