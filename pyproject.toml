@@ -5,15 +5,12 @@ description = "CSV processor for member visits with validation, grouping, and re
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-dependencies = [
-    "pytest>=9.0.3",
-    "ruff>=0.15.17",
-]
+dependencies = []
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.0",
-    "ruff>=0.0.300"
+    "pytest>=9.0.3",
+    "ruff>=0.15.17",
 ]
 
 [build-system]
