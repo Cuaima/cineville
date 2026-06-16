@@ -63,17 +63,14 @@ Install dependencies with UV:
 uv sync
 ```
 
-Run the script with defaults:
+Then use the Makefile to run the processor, tests, and more (see [Makefile commands](#makefile-commands) below).
 
-```bash
-uv run python -m src.main
-```
-
-Override input/output paths:
+To override input/output paths:
 
 ```bash
 uv run python -m src.main --members data/members.csv --visits data/visits.csv --output output/result.csv
 ```
+
 ## Makefile commands
 
 | Command | Description |
