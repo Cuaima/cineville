@@ -10,12 +10,46 @@ A small Python CLI for processing membership visit data.
 
 ## Project structure
 
-- `src/` — application code
-- `tests/` — pytest unit tests
-- `data/` — default input file location
-- `output/` — default output file location
-- `logs/` — optional runtime logs
-- `docs/` — data model diagram
+```
+cineville/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── data/
+│   ├── members.csv
+│   └── visits.csv
+├── docs/
+│   ├── data_model.drawio
+│   └── data_model.svg
+├── logs/
+│   └── .gitkeep
+├── output/
+│   └── .gitkeep
+├── src/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── models.py
+│   ├── processor.py
+│   ├── reader.py
+│   ├── reporter.py
+│   ├── validator.py
+│   └── writer.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_main.py
+│   ├── test_processor.py
+│   ├── test_reader.py
+│   ├── test_reporter.py
+│   ├── test_validator.py
+│   └── test_writer.py
+├── .gitignore
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── README.md
+├── pyproject.toml
+└── uv.lock
+```
 
 ## Data Model
 
@@ -40,6 +74,16 @@ Override input/output paths:
 ```bash
 uv run python -m src.main --members data/members.csv --visits data/visits.csv --output output/result.csv
 ```
+## Makefile commands
+
+| Command | Description |
+|---|---|
+| `make run` | Run the processor with default paths |
+| `make test` | Run the test suite |
+| `make lint` | Check for linting issues |
+| `make format` | Format and fix linting issues |
+| `make docker-build` | Build the Docker image |
+| `make docker-run` | Run the processor inside Docker |
 
 ## Output
 
