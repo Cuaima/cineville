@@ -19,7 +19,7 @@ def validate_row(
     row_name: str,
     required_fields: tuple[str, ...],
     row_id_field: str | None = None,
- ) -> bool:
+) -> bool:
     """Check that a CSV row contains the required fields.
 
     Parameters
@@ -109,7 +109,9 @@ def load_visits(path: Path) -> list[Visit]:
         barcode = row["barcode"].strip()
         reservation_id = row.get("reservation_id")
         reservation_id = (
-            reservation_id.strip() if reservation_id and reservation_id.strip() else None
+            reservation_id.strip()
+            if reservation_id and reservation_id.strip()
+            else None
         )
         visits.append(
             Visit(visit_id=visit_id, barcode=barcode, reservation_id=reservation_id)

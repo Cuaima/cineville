@@ -11,7 +11,7 @@ from .models import MemberVisitGroup
 
 def write_member_visit_groups(path: Path, groups: list[MemberVisitGroup]) -> None:
     """Write grouped member visits to CSV.
-    
+
     The output CSV has columns: `member_id`, `barcode`, and `visit_ids`.
     `visit_ids` is serialized as a JSON array (e.g. `["v1", "v2"]`) so it
     remains machine-readable when embedded in a single CSV cell and can be
