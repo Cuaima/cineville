@@ -65,4 +65,12 @@ uv run pytest
 
 ## Notes on AI usage
 
-I used Claude (Anthropic) as a sounding board throughout this project to pressure-test architecture decisions, catch edge cases, and review documentation. All code was written, understood, and is explainable by me.
+I used Claude (Anthropic) as a sounding board throughout this project. Specifically:
+
+- **Architecture decisions** — I discussed whether to use a web framework (FastAPI/Django) or a plain CLI script, and whether to split the code into multiple modules or keep it in a single file
+- **Initial scaffolding** — After deciding on the project structure, GitHub Copilot generated a first template of the project structure and boilerplate code, which I used as a starting point
+- **Code review** — I used it to review each module for edge cases, error handling gaps, and inconsistencies I missed in my own review of the boilerplate (e.g. catching the frozen dataclass / mutable list inconsistency in models.py)
+- **Validation logic** — I discussed where validation should live (the AI wanted to put all validation logic in the validator, but I wanted to do a preliminary preprocessing step in the reader to avoid creating obviously invalid objects) and how to structure the required fields check cleanly
+- **Documentation** — I used it to review docstrings and the README for clarity
+
+All code was written, understood, and is explainable by me.
