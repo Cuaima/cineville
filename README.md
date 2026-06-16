@@ -65,6 +65,4 @@ uv run pytest
 
 ## Notes on AI usage
 
-## Notes on AI usage
-
 I used Claude (Anthropic) as a sounding board throughout this project to pressure-test architecture decisions, catch edge cases, and review documentation. All code was written, understood, and is explainable by me.
