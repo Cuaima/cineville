@@ -57,6 +57,12 @@ cineville/
 
 ## How to run
 
+### Prerequisites
+
+- Python 3.12+
+- [UV](https://docs.astral.sh/uv/getting-started/installation/) — for dependency management
+- [Docker](https://www.docker.com/products/docker-desktop/) — optional, for containerised runs
+
 Install dependencies with UV:
 
 ```bash
