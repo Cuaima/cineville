@@ -1,5 +1,4 @@
 from pathlib import Path
-import pytest
 from src.reader import load_members, load_visits
 
 
@@ -21,12 +20,14 @@ def test_load_members_reads_member_records(tmp_path: Path) -> None:
     assert members_by_barcode["DEF456"].member_id == "2"
 
 
-def test_load_members_raises_for_missing_columns(tmp_path: Path) -> None:
+def test_load_members_skips_rows_with_missing_fields(tmp_path: Path) -> None:
     path = tmp_path / "members.csv"
     write_csv(path, ["member_id"], [["1"], ["2"]])
 
-    with pytest.raises(ValueError):
-        load_members(path)
+    members, members_by_barcode = load_members(path)
+
+    assert len(members) == 0
+    assert len(members_by_barcode) == 0
 
 
 def test_load_visits_parses_missing_reservation_id(tmp_path: Path) -> None:
@@ -39,5 +40,5 @@ def test_load_visits_parses_missing_reservation_id(tmp_path: Path) -> None:
 
     visits = load_visits(path)
 
-    assert visits[0].reservation_id == ""
+    assert visits[0].reservation_id is None
     assert visits[1].reservation_id == "RES-1"

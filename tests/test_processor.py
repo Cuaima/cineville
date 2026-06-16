@@ -11,5 +11,7 @@ def test_group_visits_includes_members_with_no_visits() -> None:
 
     groups = group_visits_by_member(members, visits)
 
+    assert isinstance(groups[0].visit_ids, tuple)
+    assert isinstance(groups[1].visit_ids, tuple)
     assert groups[0].visit_ids == ("v1",)
     assert groups[1].visit_ids == ()

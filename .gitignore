@@ -15,3 +15,5 @@ output/*.csv
 logs/*.log
 .DS_Store
 .env
+**/*.egg-info/
+.ruff_cache/

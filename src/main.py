@@ -1,3 +1,5 @@
+"""Main entry point for the CSV processing pipeline."""
+
 from __future__ import annotations
 
 import argparse
@@ -42,29 +44,41 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    """Run the CSV processing pipeline and emit summary stats.
+
+    Returns 0 on success and 1 on error. All top-level exceptions are logged so
+    the script can be safely used in CI or other automation pipelines.
+    """
+
     configure_logging()
     args = parse_args()
 
-    members, members_by_barcode = load_members(Path(args.members))
-    visits = load_visits(Path(args.visits))
-    valid_visits = filter_valid_visits(visits, members_by_barcode)
+    try:
+        members, members_by_barcode = load_members(Path(args.members))
+        visits = load_visits(Path(args.visits))
+        valid_visits = filter_valid_visits(visits, members_by_barcode)
 
-    groups = group_visits_by_member(members, valid_visits)
-    write_member_visit_groups(Path(args.output), groups)
+        groups = group_visits_by_member(members, valid_visits)
+        write_member_visit_groups(Path(args.output), groups)
 
-    walk_in_count = count_walk_ins(valid_visits)
-    top_members = top_n_members(valid_visits, members_by_barcode)
+        walk_in_count = count_walk_ins(valid_visits)
+        top_members = top_n_members(valid_visits, members_by_barcode)
 
-    print("Top 5 members by visit count:")
-    if top_members:
-        for member, count in top_members:
-            print(f"{member.member_id}, {count}")
-    else:
-        print("- none")
+        print("Top 5 members by visit count:")
+        if top_members:
+            for member, count in top_members:
+                print(f"{member.member_id}, {count}")
+        else:
+            print("- none")
 
-    print(f"Total walk-ins: {walk_in_count}")
-
-    return 0
+        print(f"Total walk-ins: {walk_in_count}")
+        return 0
+    except FileNotFoundError as error:
+        logging.error("Input file missing: %s", error)
+        return 1
+    except Exception as error:
+        logging.error("Unexpected error: %s", error)
+        return 1
 
 
 if __name__ == "__main__":

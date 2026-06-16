@@ -1,3 +1,5 @@
+"""Data models for members and visits."""
+
 from dataclasses import dataclass
 from typing import Optional
 

@@ -11,6 +11,15 @@ def test_count_walk_ins_counts_empty_reservation_id() -> None:
     assert count_walk_ins(visits) == 1
 
 
+def test_count_walk_ins_counts_none_reservation_id() -> None:
+    visits = [
+        Visit(visit_id="v1", barcode="ABC123", reservation_id=None),
+        Visit(visit_id="v2", barcode="DEF456", reservation_id="RES-1"),
+    ]
+
+    assert count_walk_ins(visits) == 1
+
+
 def test_top_n_members_returns_member_objects() -> None:
     members = {
         "ABC123": Member(member_id="1", barcode="ABC123"),
